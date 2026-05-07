@@ -24,3 +24,11 @@ I read this chapter: https://d2l.ai/chapter_attention-mechanisms-and-transformer
 Key notes:
 - Why use dot product?
     - It's a very intuitive method to capture the "distance" between two vectors Q and K to compute a similarity score.
+
+
+#### 05-05-2026 - Transformers
+
+
+#### 05-06-2026 - Whole-Body Control Using RL for Humanoids
+
+I have been working on a side project to bring up a whole-body control RL policy, train using sim, and deploy on a simulated humanoid robot. So far, I completed the full IsaacSim and IsaacLab setup and got comfortable with the tools.
