@@ -39,4 +39,10 @@ The key equation is Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) * V.
 
 #### 05-06-2026 - Whole-Body Control Using RL for Humanoids
 
-I have been working on a side project to bring up a whole-body control RL policy, train using sim, and deploy on a simulated humanoid robot. So far, I completed the full IsaacSim and IsaacLab setup and got comfortable with the tools.
+I have been working on a side project to bring up a whole-body control RL policy, train using sim, and deploy on a simulated humanoid robot. So far, I completed the full IsaacSim and IsaacLab setup and got comfortable with the tools. I trained two policies for ants and robot dogs. The policies use RSL-RL's OnPolicyRunner which uses PPO by default.
+
+##### Proximal Policy Optimization (PPO)
+
+Goal: improving the training stability of our policy by limiting the change made to the policy at each training epoch, thus avoiding large policy updates. This is to increase the likelihood of converging to an optimal solution. We can think of taking too large of a step during policy update as "falling off the cliff" and getting a bad policy, which is difficult or impossible to recover from.
+
+We calculate a ratio between the current and former policy to ensure the policy has not changed too much. This ratio is clipped to a range [1 - eps, 1 + eps].
