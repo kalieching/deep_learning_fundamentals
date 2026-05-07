@@ -20,3 +20,10 @@ class MultiHeadAttention():
 
     def _merge(self, x):
         NotImplementedError("This method will be implemented to merge the data from multiple heads back into original shape")
+
+    def scaled_dot_product(self, Q, K, V, mask=None):
+        similarity_scores = torch.matmul(Q, K.transpose(-2, -1)) / torch.sqrt(torch.tensor(self.d_k, dtype=torch.float32))
+        if mask is not None:
+            similarity_scores = similarity_scores.masked_fill(mask == 0, float("-inf"))
+        weights = F.softmax(similarity_scores, dim=-1)
+        return torch.matmul(weights, V)
