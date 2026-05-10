@@ -46,3 +46,14 @@ I have been working on a side project to bring up a whole-body control RL policy
 Goal: improving the training stability of our policy by limiting the change made to the policy at each training epoch, thus avoiding large policy updates. This is to increase the likelihood of converging to an optimal solution. We can think of taking too large of a step during policy update as "falling off the cliff" and getting a bad policy, which is difficult or impossible to recover from.
 
 We calculate a ratio between the current and former policy to ensure the policy has not changed too much. This ratio is clipped to a range [1 - eps, 1 + eps].
+
+#### 05-09-2026
+
+Background
+- The core task of transformers is to do sequence modeling - given some input sequence (words, tokens, characters) produce some output
+- Sequence modeling useful for translation (language), summarization, generation (prompt completion)
+- Words depend on other words that are sometimes far from each other in the sentence
+- Prior to transformers, the dominant approach was Recurrent Neural Networks (RNNs) where a sequence was processed one at a time, left to right, carrying forward the hidden state
+
+Attention Scoring Functions
+- Distance functions are more expensive to compute than dot products
